@@ -29,10 +29,10 @@ type ExampleReply struct {
 type JobType string
 
 type JobArgs struct {
-	 File string
-	 Operation 	JobType
-	 JobID int
-	 NumJobsOther int // number of jobs in other phases (map or reduce)
+	 File 			string
+	 Operation 		JobType
+	 WorkerNodeID 	int
+	 NumJobsOther 	int // number of jobs in other phases (map or reduce)
 }
 
 type JobReply struct {
@@ -43,7 +43,7 @@ type RegisterArgs struct {
 }
 
 type RegisterReply struct {
-	workerID int
+	WorkerNodeID int
 }
 
 // Cook up a unique-ish UNIX-domain socket name

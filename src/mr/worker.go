@@ -28,7 +28,15 @@ func ihash(key string) int {
 type WorkerNode struct {
 	mapf		func(string,string) 	[]KeyValue
 	reducef		func(string, []string) 	string
-	id 			int
+	ID			int
+}
+
+//
+// request a job from the master node
+//
+func (w* WorkerNode) requestJob() Job {
+	args := JobsArgs
+	args.WorkerNodeID = w.ID
 }
 
 //
@@ -80,7 +88,7 @@ func (w *WorkerNode) register(master string) {
 
 	// call()
 	call(master, args, reply)
-	w.id = reply.workerID
+	w.ID = reply.WorkerNodeID
 }
 
 //
